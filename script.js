@@ -26,9 +26,19 @@ const noteSearch = document.getElementById('noteSearch');
 const entryCount = document.getElementById('entryCount');
 const toggleNoteFormBtn = document.getElementById('toggleNoteFormBtn');
 const quickAddBtn = document.getElementById('quickAddBtn');
+const noteSystemStatus = document.getElementById('noteSystemStatus');
 
-let notes = loadNotes();
+let notes = [];
 let query = '';
+let persistenceMode = 'localStorage';
+const memoryFallback = { notes: [] };
+
+function setSystemStatus(message, kind = 'ok') {
+  if (!noteSystemStatus) return;
+  noteSystemStatus.textContent = message;
+  noteSystemStatus.classList.remove('ok', 'warn');
+  noteSystemStatus.classList.add(kind === 'warn' ? 'warn' : 'ok');
+}
 
 function generateId() {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
@@ -38,52 +48,103 @@ function generateId() {
   return `note-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
 }
 
-function loadNotes() {
+function normalizeNote(note) {
+  return {
+    id: note?.id ? String(note.id) : generateId(),
+    title: String(note?.title || 'Ohne Titel'),
+    content: String(note?.content || ''),
+    createdAt: note?.createdAt ? String(note.createdAt) : new Date().toISOString(),
+  };
+}
+
+function readStoredNotes() {
+  if (persistenceMode === 'memory') {
+    return memoryFallback.notes;
+  }
+
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      return [
-        {
-          id: generateId(),
-          title: 'Welcome to ScribeAI',
-          content: 'Scan Ergebnis und Zusammenfassung der letzten Sitzung.',
-          createdAt: new Date().toISOString(),
-        },
-      ];
-    }
-
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-
-    return parsed.map((note) => ({
-      id: note?.id ? String(note.id) : generateId(),
-      title: String(note?.title || 'Ohne Titel'),
-      content: String(note?.content || ''),
-      createdAt: note?.createdAt ? String(note.createdAt) : new Date().toISOString(),
-    }));
+    if (!raw) return null;
+    return JSON.parse(raw);
   } catch {
-    return [];
+    persistenceMode = 'memory';
+    setSystemStatus('Lokaler Speicher nicht verfügbar. Notizen laufen im temporären Speicher.', 'warn');
+    return memoryFallback.notes;
   }
 }
 
+function writeStoredNotes(nextNotes) {
+  if (persistenceMode === 'memory') {
+    memoryFallback.notes = nextNotes;
+    return false;
+  }
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextNotes));
+    return true;
+  } catch {
+    persistenceMode = 'memory';
+    memoryFallback.notes = nextNotes;
+    setSystemStatus('Speichern im Browser blockiert. Notizen bleiben nur bis zum Neuladen erhalten.', 'warn');
+    return false;
+  }
+}
+
+function loadNotes() {
+  const stored = readStoredNotes();
+  if (!stored) {
+    return [
+      {
+        id: generateId(),
+        title: 'Welcome to ScribeAI',
+        content: 'Scan Ergebnis und Zusammenfassung der letzten Sitzung.',
+        createdAt: new Date().toISOString(),
+      },
+    ];
+  }
+
+  if (!Array.isArray(stored)) {
+    return [];
+  }
+
+  return stored.map(normalizeNote);
+}
+
 function saveNotes() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+  const isPersistent = writeStoredNotes(notes);
+  if (isPersistent) {
+    setSystemStatus('Notizen wurden lokal gespeichert.', 'ok');
+  }
 }
 
 function formatDate(isoString) {
-  return new Date(isoString).toLocaleString('de-DE', {
+  const date = new Date(isoString);
+  if (Number.isNaN(date.getTime())) {
+    return 'Unbekanntes Datum';
+  }
+
+  return date.toLocaleString('de-DE', {
     dateStyle: 'short',
     timeStyle: 'short',
   });
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
 function renderNotes() {
   if (!noteGrid || !entryCount) return;
 
-  const normalized = query.trim().toLowerCase();
+  const normalizedQuery = query.trim().toLowerCase();
   const visibleNotes = notes.filter((note) => {
-    if (!normalized) return true;
-    return `${note.title} ${note.content}`.toLowerCase().includes(normalized);
+    if (!normalizedQuery) return true;
+    return `${note.title} ${note.content}`.toLowerCase().includes(normalizedQuery);
   });
 
   entryCount.textContent = String(notes.length);
@@ -106,15 +167,6 @@ function renderNotes() {
     .join('');
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
-}
-
 if (noteForm) {
   noteForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -123,14 +175,19 @@ if (noteForm) {
     const title = String(formData.get('title') || '').trim();
     const content = String(formData.get('content') || '').trim();
 
-    if (!title || !content) return;
+    if (!title || !content) {
+      setSystemStatus('Bitte Titel und Inhalt ausfüllen.', 'warn');
+      return;
+    }
 
-    notes.unshift({
-      id: generateId(),
-      title,
-      content,
-      createdAt: new Date().toISOString(),
-    });
+    notes.unshift(
+      normalizeNote({
+        id: generateId(),
+        title,
+        content,
+        createdAt: new Date().toISOString(),
+      }),
+    );
 
     saveNotes();
     noteForm.reset();
@@ -159,4 +216,8 @@ if (noteSearch) {
   });
 }
 
+notes = loadNotes();
+if (persistenceMode === 'localStorage') {
+  setSystemStatus('Notizen bereit. Änderungen werden automatisch lokal gespeichert.', 'ok');
+}
 renderNotes();

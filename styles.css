@@ -474,6 +474,21 @@ h1 {
   color: var(--muted);
 }
 
+
+.system-status {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.system-status.warn {
+  color: #fbbf24;
+}
+
+.system-status.ok {
+  color: #86efac;
+}
+
 .hidden {
   display: none;
 }
