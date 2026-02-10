@@ -56,14 +56,14 @@
         <header class="topbar">
           <div>
             <h1>Dashboard</h1>
-            <p>4 Einträge</p>
+            <p><span id="entryCount">0</span> Einträge</p>
           </div>
           <div class="top-actions">
             <label class="search">
               <span>⌕</span>
-              <input type="text" placeholder="Frag NotePlanet... z.B. 'Was war in Meeting 12?'" />
+              <input id="noteSearch" type="text" placeholder="Suche Notizen..." />
             </label>
-            <button type="button" class="primary">+ Neu</button>
+            <button type="button" class="primary" id="quickAddBtn">+ Neu</button>
           </div>
         </header>
 
@@ -129,24 +129,27 @@
         </section>
 
         <section class="panel">
-          <div class="panel-head">
+          <div class="panel-head panel-head-wrap">
             <h3>ZULETZT BEARBEITET</h3>
-            <a href="#">Alle ansehen ↗</a>
+            <div class="note-actions">
+              <button id="toggleNoteFormBtn" type="button" class="secondary">+ Notiz erstellen</button>
+              <a href="#">Alle ansehen ↗</a>
+            </div>
           </div>
-          <div class="note-grid">
-            <article class="note-card">
-              <h4>Welcome to ScribeAI</h4>
-              <p>Scan Ergebnis und Zusammenfassung der letzten Sitzung.</p>
-            </article>
-            <article class="note-card">
-              <h4>Neue Mengen-Notiz</h4>
-              <p>Kein Inhalt</p>
-            </article>
-            <article class="note-card">
-              <h4>Neue Mengen-Notiz</h4>
-              <p>Kein Inhalt</p>
-            </article>
-          </div>
+
+          <form id="noteForm" class="note-form hidden">
+            <label>
+              Titel
+              <input type="text" name="title" placeholder="z. B. Weekly Marketing Plan" required />
+            </label>
+            <label>
+              Inhalt
+              <textarea name="content" rows="4" placeholder="Deine Notiz hier..." required></textarea>
+            </label>
+            <button type="submit" class="primary">Notiz speichern</button>
+          </form>
+
+          <div id="noteGrid" class="note-grid" aria-live="polite"></div>
         </section>
       </main>
     </div>

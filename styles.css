@@ -26,6 +26,12 @@ a {
   text-decoration: none;
 }
 
+input,
+textarea,
+button {
+  font: inherit;
+}
+
 .app-shell {
   min-height: 100vh;
   display: grid;
@@ -164,13 +170,23 @@ h1 {
   outline: none;
 }
 
-.primary {
+.primary,
+.secondary {
   border: 0;
   border-radius: 14px;
   padding: 0.78rem 1.35rem;
   color: white;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.primary {
   background: linear-gradient(140deg, #5b2ef5, #8b39ff);
+}
+
+.secondary {
+  background: #171d2c;
+  border: 1px solid var(--border);
 }
 
 .login-panel {
@@ -194,12 +210,14 @@ h1 {
   color: var(--muted);
 }
 
-.login-form {
+.login-form,
+.note-form {
   display: grid;
   gap: 0.8rem;
 }
 
-.login-form label {
+.login-form label,
+.note-form label {
   display: grid;
   gap: 0.35rem;
   color: #dce8ff;
@@ -207,7 +225,9 @@ h1 {
 }
 
 .login-form input[type="email"],
-.login-form input[type="password"] {
+.login-form input[type="password"],
+.note-form input,
+.note-form textarea {
   border: 1px solid var(--border);
   background: #090d17;
   border-radius: 12px;
@@ -215,7 +235,14 @@ h1 {
   color: var(--text);
 }
 
-.login-form input:focus {
+.note-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.login-form input:focus,
+.note-form input:focus,
+.note-form textarea:focus {
   outline: 1px solid #5b2ef5;
   border-color: #5b2ef5;
 }
@@ -337,9 +364,9 @@ h1 {
 }
 
 .panel h3 {
-  margin: 0 0 1rem;
+  margin: 0;
   letter-spacing: 0.1em;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 
 .quick-grid {
@@ -386,11 +413,32 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
+.panel-head-wrap {
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.note-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.note-actions a,
 .panel-head a {
   color: #dce8ff;
   font-weight: 700;
+}
+
+.note-form {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #0c101b;
+  padding: 1rem;
 }
 
 .note-grid {
@@ -409,6 +457,25 @@ h1 {
 .note-card p {
   margin: 0;
   color: var(--muted);
+  white-space: pre-line;
+}
+
+.note-card small {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: #93a4ca;
+}
+
+.empty-notes {
+  grid-column: 1 / -1;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  color: var(--muted);
+}
+
+.hidden {
+  display: none;
 }
 
 @media (max-width: 1200px) {
