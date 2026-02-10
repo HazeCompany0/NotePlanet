@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotePlanet Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">◧</div>
+          <span>NotePlanet</span>
+        </div>
+
+        <nav class="side-section">
+          <p class="side-title">Hauptmenü</p>
+          <a href="#" class="menu-link active">Dashboard</a>
+          <a href="#" class="menu-link">Alle Notizen</a>
+          <a href="#" class="menu-link">Favoriten</a>
+        </nav>
+
+        <nav class="side-section">
+          <p class="side-title">Spezial-Tools</p>
+          <a href="#" class="menu-link">Projekt-Planer</a>
+          <a href="#" class="menu-link">Budget-Planer</a>
+          <a href="#" class="menu-link">Pflanzen-Tracker</a>
+        </nav>
+
+        <nav class="side-section">
+          <div class="side-title-row">
+            <p class="side-title">Ordner</p>
+            <button class="add-btn" type="button">+</button>
+          </div>
+          <a href="#" class="menu-link">Work</a>
+        </nav>
+
+        <nav class="side-section">
+          <p class="side-title">Tags</p>
+          <a href="#" class="menu-link"># General</a>
+          <a href="#" class="menu-link"># Tutorial</a>
+          <a href="#" class="menu-link"># Work</a>
+        </nav>
+
+        <div class="profile-card">
+          <div class="avatar">M</div>
+          <div>
+            <strong>Marvin</strong>
+            <p>Cloud Aktiv</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <h1>Dashboard</h1>
+            <p>4 Einträge</p>
+          </div>
+          <div class="top-actions">
+            <label class="search">
+              <span>⌕</span>
+              <input type="text" placeholder="Frag NotePlanet... z.B. 'Was war in Meeting 12?'" />
+            </label>
+            <button type="button" class="primary">+ Neu</button>
+          </div>
+        </header>
+
+        <section class="metric-grid">
+          <article class="metric-card purple">
+            <p class="metric-label">PROJEKT-FORTSCHRITT</p>
+            <h2>0%</h2>
+            <div class="bar"><span></span></div>
+            <p class="metric-foot">0 AKTIVE PLÄNE</p>
+          </article>
+          <article class="metric-card green">
+            <p class="metric-label">PFLANZENPFLEGE</p>
+            <h2>0</h2>
+            <p class="metric-foot">ALLE VERSORGT</p>
+          </article>
+          <article class="metric-card neutral">
+            <p class="metric-label">AUFGABEN STATUS</p>
+            <h2>0 / 0</h2>
+            <p class="metric-foot">CHECKLIST-ITEMS ERLEDIGT</p>
+          </article>
+          <article class="metric-card blue">
+            <p class="metric-label">FINANZEN</p>
+            <h2>0.00 €</h2>
+            <p class="metric-foot">AKTUELLER SALDO</p>
+          </article>
+        </section>
+
+        <section class="panel">
+          <h3>SCHNELLZUGRIFF</h3>
+          <div class="quick-grid">
+            <article class="quick-card"><span>▣</span><strong>Projekt-Planer</strong><small>TIMELINE</small></article>
+            <article class="quick-card"><span>◍</span><strong>Pflanzen</strong><small>TRACKER</small></article>
+            <article class="quick-card"><span>$</span><strong>Budget-Planer</strong><small>FINANZEN</small></article>
+            <article class="quick-card"><span>✎</span><strong>Drehbücher</strong><small>KREATIV</small></article>
+            <article class="quick-card"><span>⚡</span><strong>KI Prompts</strong><small>TRESOR</small></article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>ZULETZT BEARBEITET</h3>
+            <a href="#">Alle ansehen ↗</a>
+          </div>
+          <div class="note-grid">
+            <article class="note-card">
+              <h4>Welcome to ScribeAI</h4>
+              <p>Scan Ergebnis und Zusammenfassung der letzten Sitzung.</p>
+            </article>
+            <article class="note-card">
+              <h4>Neue Mengen-Notiz</h4>
+              <p>Kein Inhalt</p>
+            </article>
+            <article class="note-card">
+              <h4>Neue Mengen-Notiz</h4>
+              <p>Kein Inhalt</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
