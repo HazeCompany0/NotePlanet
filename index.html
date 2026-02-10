@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotePlanet – Smarte Notizen ohne Reibung</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <div class="logo">🪐 NotePlanet</div>
+        <a class="cta cta-sm" href="#pricing">Preise</a>
+      </nav>
+
+      <section class="container hero-content">
+        <p class="eyebrow">Blitz-Start · Offline-First · KI-Assistenz</p>
+        <h1>Schreibe Notizen. Verwalte Aufgaben. Lass KI den Rest beschleunigen.</h1>
+        <p class="subtitle">
+          Minimalistische Notiz-App mit Rich-Text, Checklisten, Tags, Sprachtranskription,
+          Zusammenfassungen und kontextbasierter Suche.
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="#features">Features ansehen</a>
+          <a class="ghost" href="#roadmap">Roadmap</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="features" class="container section">
+        <h2>Core Features</h2>
+        <div class="grid features-grid">
+          <article class="card">
+            <h3>Notizen & Rich-Text</h3>
+            <p>Fett, kursiv, unterstrichen, Listen und Links zu externen Quellen.</p>
+          </article>
+          <article class="card">
+            <h3>Checklisten & To-Dos</h3>
+            <p>Checkboxen, Statuswechsel, klare Aufgabenverfolgung.</p>
+          </article>
+          <article class="card">
+            <h3>Ordner & Tags</h3>
+            <p>Flexible Organisation nach Themen, Projekten und Kontext.</p>
+          </article>
+          <article class="card">
+            <h3>KI-Zusammenfassung</h3>
+            <p>Kurzfassung auf Knopfdruck mit Kernpunkten und Schlüsselsätzen.</p>
+          </article>
+          <article class="card">
+            <h3>Kontext-Suche</h3>
+            <p>Natürliche Sprache wie: „Marketing-Notizen Mai bis Juni“.</p>
+          </article>
+          <article class="card">
+            <h3>Meeting-Mode</h3>
+            <p>Aufzeichnung, Transkript, nächste Schritte und Action-Points.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section">
+        <h2>Live-Demo (UI Konzept)</h2>
+        <div class="demo card">
+          <div class="demo-header">
+            <input type="text" value="Projekt Kickoff – Notizen" aria-label="Titel" />
+            <button type="button" class="ghost" id="summarizeBtn">Kurzfassung erstellen</button>
+          </div>
+          <textarea aria-label="Notizinhalt">
+Ziele:
+- MVP bis Ende Q2
+- Nutzerfeedback nach 2 Wochen sammeln
+
+To-Do:
+[ ] API Architektur finalisieren
+[ ] Design Review mit Team
+[ ] Pricing Tests vorbereiten
+          </textarea>
+          <div class="ai-output" id="aiOutput">
+            <strong>KI-Kurzfassung:</strong>
+            <p>Noch keine Zusammenfassung erstellt.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="container section">
+        <h2>Preise</h2>
+        <div class="grid pricing-grid">
+          <article class="card price">
+            <h3>Free</h3>
+            <ul>
+              <li>✅ Notizen & Grundfunktionen</li>
+              <li>❌ KI-Zusammenfassung</li>
+              <li>❌ Audio-Transkription</li>
+              <li>❌ Cross-Device Sync</li>
+            </ul>
+          </article>
+          <article class="card price price-highlight">
+            <h3>Premium</h3>
+            <ul>
+              <li>✅ Alles aus Free</li>
+              <li>✅ KI-Zusammenfassung</li>
+              <li>✅ Audio-Transkription</li>
+              <li>✅ Cross-Device Sync</li>
+              <li>✅ Sicherheit & Verschlüsselung</li>
+            </ul>
+          </article>
+          <article class="card price">
+            <h3>Team</h3>
+            <ul>
+              <li>💰 Collaboration in Echtzeit</li>
+              <li>🔐 Rechteverwaltung</li>
+              <li>🔌 API-Integrationen</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="roadmap" class="container section">
+        <h2>Roadmap</h2>
+        <div class="timeline">
+          <article class="card">
+            <h3>Phase 1 · Launch</h3>
+            <p>Notizen, Checklisten, KI-Zusammenfassung, Sprache→Text, Tagging, Suche, Offline+Sync.</p>
+          </article>
+          <article class="card">
+            <h3>Phase 2 · Scale</h3>
+            <p>Smarter Assistant, Vorlagen, OCR, erweiterte KI-Suche und Predictive Tags.</p>
+          </article>
+          <article class="card">
+            <h3>Phase 3 · Enterprise</h3>
+            <p>Collaboration, Berechtigungen, Integrationen und hybride KI-Betriebsmodelle.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <p>© NotePlanet · Fokus auf Produktivität, Geschwindigkeit und Klarheit.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
