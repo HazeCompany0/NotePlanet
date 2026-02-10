@@ -173,6 +173,86 @@ h1 {
   background: linear-gradient(140deg, #5b2ef5, #8b39ff);
 }
 
+.login-panel {
+  margin-top: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 1.2rem;
+  background: linear-gradient(180deg, #0d1220, #0a0d16);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(220px, 1fr) minmax(320px, 1.4fr);
+}
+
+.login-head h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.login-head p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.login-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.login-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: #dce8ff;
+  font-size: 0.9rem;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  border: 1px solid var(--border);
+  background: #090d17;
+  border-radius: 12px;
+  padding: 0.7rem 0.8rem;
+  color: var(--text);
+}
+
+.login-form input:focus {
+  outline: 1px solid #5b2ef5;
+  border-color: #5b2ef5;
+}
+
+.login-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.remember {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted) !important;
+}
+
+.login-row a {
+  color: #c4b5fd;
+  font-size: 0.9rem;
+}
+
+.login-submit {
+  justify-self: start;
+}
+
+.login-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.login-status.success {
+  color: #67e8a7;
+}
+
 .metric-grid,
 .quick-grid,
 .note-grid {
@@ -363,6 +443,10 @@ h1 {
   .quick-grid,
   .note-grid {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+
+  .login-panel {
+    grid-template-columns: 1fr;
   }
 }
 

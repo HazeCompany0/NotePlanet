@@ -67,6 +67,32 @@
           </div>
         </header>
 
+        <section class="login-panel">
+          <div class="login-head">
+            <h2>Login-Bereich</h2>
+            <p>Melde dich an, um Sync, Premium-Features und Collaboration zu nutzen.</p>
+          </div>
+          <form id="loginForm" class="login-form">
+            <label>
+              E-Mail
+              <input type="email" name="email" placeholder="marvin@noteplanet.app" required />
+            </label>
+            <label>
+              Passwort
+              <input type="password" name="password" placeholder="••••••••" minlength="6" required />
+            </label>
+            <div class="login-row">
+              <label class="remember">
+                <input type="checkbox" name="remember" />
+                Angemeldet bleiben
+              </label>
+              <a href="#">Passwort vergessen?</a>
+            </div>
+            <button type="submit" class="primary login-submit">Anmelden</button>
+            <p id="loginStatus" class="login-status" aria-live="polite">Noch nicht angemeldet.</p>
+          </form>
+        </section>
+
         <section class="metric-grid">
           <article class="metric-card purple">
             <p class="metric-label">PROJEKT-FORTSCHRITT</p>
@@ -124,5 +150,6 @@
         </section>
       </main>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
