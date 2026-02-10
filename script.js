@@ -30,13 +30,21 @@ const quickAddBtn = document.getElementById('quickAddBtn');
 let notes = loadNotes();
 let query = '';
 
+function generateId() {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+
+  return `note-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+}
+
 function loadNotes() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
       return [
         {
-          id: crypto.randomUUID(),
+          id: generateId(),
           title: 'Welcome to ScribeAI',
           content: 'Scan Ergebnis und Zusammenfassung der letzten Sitzung.',
           createdAt: new Date().toISOString(),
@@ -46,7 +54,13 @@ function loadNotes() {
 
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    return parsed;
+
+    return parsed.map((note) => ({
+      id: note?.id ? String(note.id) : generateId(),
+      title: String(note?.title || 'Ohne Titel'),
+      content: String(note?.content || ''),
+      createdAt: note?.createdAt ? String(note.createdAt) : new Date().toISOString(),
+    }));
   } catch {
     return [];
   }
@@ -93,7 +107,7 @@ function renderNotes() {
 }
 
 function escapeHtml(value) {
-  return value
+  return String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
@@ -112,7 +126,7 @@ if (noteForm) {
     if (!title || !content) return;
 
     notes.unshift({
-      id: crypto.randomUUID(),
+      id: generateId(),
       title,
       content,
       createdAt: new Date().toISOString(),
