@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlantCare Tracker · Pflegehistorie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="history">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">🌿 PlantCare Tracker</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Navigation öffnen">☰</button>
+        <nav class="main-nav" id="mainNav">
+          <a href="add-plant.html">Pflanze hinzufügen</a>
+          <a href="diagnose.html">Diagnose</a>
+          <a href="history.html">Pflegehistorie</a>
+          <a href="settings.html">Einstellungen</a>
+          <a href="community.html">Community</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page fade-up">
+      <section class="section-head">
+        <h1>Pflegehistorie</h1>
+        <p>Chronologie mit Fotos, Notizen und Behandlungsschritten.</p>
+      </section>
+
+      <section class="timeline-grid">
+        <article class="card timeline-card hover-rise">
+          <h3>12. April · Monstera</h3>
+          <p>Gedüngt, Blattreinigung durchgeführt, Wachstum stabil.</p>
+        </article>
+        <article class="card timeline-card hover-rise">
+          <h3>18. April · Basilikum</h3>
+          <p>Mehltau entdeckt, Behandlung mit Bio-Fungizid gestartet.</p>
+        </article>
+        <article class="card timeline-card hover-rise">
+          <h3>22. April · Ficus</h3>
+          <p>Umtopfen in größeren Topf, neue Triebe sichtbar.</p>
+        </article>
+      </section>
+
+      <section class="panel chart-panel">
+        <h2>Verlaufsvisualisierung</h2>
+        <div class="simple-chart" role="img" aria-label="Gesundheitsverlauf">
+          <span style="height: 40%">Jan</span>
+          <span style="height: 55%">Feb</span>
+          <span style="height: 65%">Mär</span>
+          <span style="height: 78%">Apr</span>
+          <span style="height: 88%">Mai</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
