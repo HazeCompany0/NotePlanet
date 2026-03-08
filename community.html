@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlantCare Tracker · Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="community">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">🌿 PlantCare Tracker</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Navigation öffnen">☰</button>
+        <nav class="main-nav" id="mainNav">
+          <a href="add-plant.html">Pflanze hinzufügen</a>
+          <a href="diagnose.html">Diagnose</a>
+          <a href="history.html">Pflegehistorie</a>
+          <a href="settings.html">Einstellungen</a>
+          <a href="community.html">Community</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page fade-up">
+      <section class="section-head">
+        <h1>Community</h1>
+        <p>Teile Fotos, tausche Tipps aus und unterstütze andere Pflanzenliebhaber.</p>
+      </section>
+
+      <section class="community-feed">
+        <article class="card post hover-rise">
+          <h3>@lena.garden</h3>
+          <p>Meine Monstera hat gelbe Blattspitzen – was kann ich optimieren?</p>
+          <div class="comment-box">💬 Tipp: Prüfe Staunässe und reduziere direkte Mittagssonne.</div>
+        </article>
+        <article class="card post hover-rise">
+          <h3>@urban.jungle</h3>
+          <p>Erfolgreiche Schädlingsbekämpfung mit Neem in 2 Wochen 🎉</p>
+          <div class="comment-box">💬 Frage: Wie oft hast du die Blätter eingesprüht?</div>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

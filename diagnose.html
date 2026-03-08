@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlantCare Tracker · Diagnose</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="diagnose">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">🌿 PlantCare Tracker</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Navigation öffnen">☰</button>
+        <nav class="main-nav" id="mainNav">
+          <a href="add-plant.html">Pflanze hinzufügen</a>
+          <a href="diagnose.html">Diagnose</a>
+          <a href="history.html">Pflegehistorie</a>
+          <a href="settings.html">Einstellungen</a>
+          <a href="community.html">Community</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page fade-up two-col">
+      <section class="panel">
+        <h1>Diagnose-Center</h1>
+        <p>
+          Fotografiere betroffene Blätter direkt in der App oder lade ein Bild hoch. Wir zeigen
+          dir Diagnose, Behandlung und passende Produktkategorien.
+        </p>
+        <button class="camera-btn" type="button">📸 Kamera öffnen</button>
+        <label class="upload-box" for="diagnoseUpload">
+          <strong>Bild hochladen</strong>
+          <span>PNG/JPG bis 10 MB</span>
+          <input id="diagnoseUpload" type="file" accept="image/*" />
+        </label>
+      </section>
+
+      <section class="panel dark-result hover-rise">
+        <h2>Ergebnis</h2>
+        <p><strong>Diagnose:</strong> Verdacht auf Blattläuse</p>
+        <p><strong>Pflegeempfehlungen:</strong></p>
+        <ul>
+          <li>Pflanze isolieren und befallene Blätter entfernen.</li>
+          <li>Mit Neem-Lösung alle 3 Tage behandeln.</li>
+          <li>Luftfeuchtigkeit stabil halten, Zugluft vermeiden.</li>
+        </ul>
+        <p><strong>Produktlinks:</strong></p>
+        <div class="pill-links">
+          <a href="#">Neemöl & Insektizide</a>
+          <a href="#">Sprühflaschen</a>
+          <a href="#">Biologische Nützlinge</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
